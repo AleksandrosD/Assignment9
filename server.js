@@ -14,11 +14,11 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 
-// function getNextIdFromCollection(collection) {
-//   if (collection.length === 0) return 1;
-//   const lastRecord = collection[collection.length - 1];
-//   return lastRecord.id + 1;
-// }
+function getNextIdFromCollection(collection) {
+  if (collection.length === 0) return 1;
+  const lastRecord = collection[collection.length - 1];
+  return lastRecord.id + 1;
+}
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Recipes API!!!!");
@@ -61,7 +61,9 @@ app.post("/recipe", async (req, res) => {
 
     res.status(201).json(newRec);
   } catch (err) {
-    
+    if (err.name === "SequelizeValidationError") {
+      return res.status(422).json({ errors: err.errors.map((e) => e.message) });
+    }
     console.error(err);
     res.status(500).send({ message: err.message });
   }
@@ -83,7 +85,9 @@ app.patch("/recipe/:id", async (req, res) => {
       res.status(404).send({ message: "Recipe not found" });
     }
   } catch (err) {
-    
+    if (err.name === "SequelizeValidationError") {
+      return res.status(422).json({ errors: err.errors.map((e) => e.message) });
+    }
     console.error(err);
     res.status(500).send({ message: err.message });
   }
