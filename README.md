@@ -12,7 +12,7 @@ This project was a TTP requirement where we were required to create a CRUD funct
 
 1. Clone the repository: `https://github.com/AleksandrosD/Assignment9.git`
 
-2. Install dependencies: `npm install`,`npm istall experss`,
+2. Install dependencies: `npm install`,`npm install experss`,
 
 3. Configure the database:
 - Create a PostgreSQL database.
@@ -27,5 +27,5 @@ If you want to populate the database with sample data, you can run the seeds: `n
 
  ## Contributors
 The main contributor to the project is:
-- AleksandrosD (GitHub: [@AleksandrosD](https://github.com/AlesandrosD))
+- AleksandrosD (GitHub: [@AleksandrosD](https://github.com/AleksandrosD))
 
